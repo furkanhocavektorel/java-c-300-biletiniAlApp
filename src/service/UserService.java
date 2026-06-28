@@ -1,8 +1,11 @@
 package service;
 
 import entity.User;
+import enums.ERole;
 import repository.IUserRepository;
 import repository.UserRepository;
+
+import java.util.Random;
 
 public class UserService implements IUserService{
 
@@ -15,9 +18,13 @@ public class UserService implements IUserService{
     @Override
     public boolean register(String email,String password){
         User user= new User();
-        user.setId(3242345L);
+
+        Random rnd= new Random();
+        user.setId(rnd.nextLong());
+
         user.setEmail(email);
         user.setPassword(password);
+        user.setRole(ERole.CUSTOMER);
 
         userRepository.createUser(user);
         return true;
@@ -25,6 +32,7 @@ public class UserService implements IUserService{
 
     @Override
     public User login(String email,String password){
+
 
         User user=userRepository.findUserByEmail(email);
 
@@ -40,7 +48,16 @@ public class UserService implements IUserService{
 
     }
 
+    public User findUserByID(Long ID){
+        return userRepository.findUserByID(ID);
+    }
 
+    @Override
+    public void updateName(Long id, String yeniAd) {
+        User user= findUserByID(id);
+        user.setName(yeniAd);
+        userRepository.updateName(user);
+    }
 
 
 }

@@ -29,4 +29,13 @@ public class UserRepositoryForMs implements IUserRepository {
         return null;
     }
 
+    public User findUserByID (Long ID){
+        return null;
+    }
+
+    @Override
+    public void updateName(User user) {
+
+    }
+
 }

@@ -11,4 +11,9 @@ public interface IUserRepository {
 
     User findUserByEmail(String email);
 
+
+    public User findUserByID (Long ID);
+
+
+    void updateName(User user);
 }

@@ -29,4 +29,27 @@ public class UserRepository implements IUserRepository {
     }
 
 
+    public User findUserByID (Long ID){
+        for (int i=0; i<=Database.userDB.size()-1 ; i++){
+
+            if (Database.userDB.get(i).getId().equals(ID)){
+                User user=Database.userDB.get(i);
+                return user;
+            }
+
+        }
+
+        return null;
+
+    }
+
+    @Override
+    public void updateName(User user) {
+        // ODEV Eski kullanıcıyı silmeden
+        // sadece adını güncellemek istiyorum.
+        Database.userDB.remove(findUserByID(user.getId()));
+        Database.userDB.add(user);
+    }
+
+
 }

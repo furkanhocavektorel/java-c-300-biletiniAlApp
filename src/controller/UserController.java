@@ -21,5 +21,11 @@ public class UserController {
         return userService.login(email, password);
     }
 
+    public User getUserByID (Long ID){
+        return userService.findUserByID(ID);
+    }
 
+    public void updateName(Long id, String yeniAd) {
+        userService.updateName(id,yeniAd);
+    }
 }

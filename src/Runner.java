@@ -91,7 +91,11 @@ public class Runner {
 
             switch (secim){
                 case 1: adDegistir();
-                case 2:
+                break;
+                case 2: soyadDegistir();
+                break;
+                case 3: profilimiGoster();
+                break;
                 case 0: break;
                 default:
                     System.out.println("yanlis secim");
@@ -108,6 +112,25 @@ public class Runner {
         System.out.println("adınızı giriniz");
         String yeniAd= src.nextLine();
         user.setName(yeniAd);
+
+        userController.updateName(user.getId(),yeniAd);
+    }
+
+    static void soyadDegistir(){
+        src.nextLine();
+        System.out.println("soyadınızı giriniz");
+        String yeniSoyad = src.nextLine();
+        user.setSurname(yeniSoyad);
+
+    }
+
+    static void profilimiGoster(){
+        User myUser = userController.getUserByID(user.getId());
+        System.out.println(myUser.getId());
+        System.out.println(myUser.getName());
+        System.out.println(myUser.getSurname());
+        System.out.println(myUser.getPhone());
+
     }
 
 
