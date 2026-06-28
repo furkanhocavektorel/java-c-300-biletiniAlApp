@@ -1,13 +1,14 @@
 package repository;
 
 import db.Database;
+import db.MsDatabase;
 import entity.User;
 
-public class UserRepository implements IUserRepository {
+public class UserRepositoryForMs implements IUserRepository {
 
     @Override
     public void createUser(User user){
-        Database.userDB.add(user);
+        MsDatabase.userDB.add(user);
     }
 
     @Override
@@ -18,7 +19,7 @@ public class UserRepository implements IUserRepository {
 
         for (int i=0; i<=Database.userDB.size()-1 ; i++){
 
-            if (Database.userDB.get(i).getEmail().equals(email)){
+            if (MsDatabase.userDB.get(i).getEmail().equals(email)){
                 User user=Database.userDB.get(i);
                 return user;
             }
@@ -27,6 +28,5 @@ public class UserRepository implements IUserRepository {
 
         return null;
     }
-
 
 }
